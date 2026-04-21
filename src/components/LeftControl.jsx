@@ -2,11 +2,13 @@ import React from 'react'
 
 function LeftControl({handleDirection}) {
   return (
+    /*aqui definimos el tamaño vertical del control*/
     <div className=" relative w-[100px] h-[240px] border-4 rounded-l-3xl border-solid bg-cyan-200 ">
 
       <div className="absolute -top-4 left-2 w-20 h-4 bg-cyan-100 rounded-t-xl"></div>
-
+{/* aqui ponemos el boton -, esta arriba del lado izquierdo */}
         <button className="absolute top-0 right-1 w-5 h-5 text-gray-500 text-2xl bg-transparent">-</button>
+{/* este es el circulo decorativo, este circulo lo tenemos blanco   */}
 
         <div className="absolute top-12 absolute left-6 relative w-20 h-20">
 
@@ -15,27 +17,30 @@ function LeftControl({handleDirection}) {
         </div>
 
           <div className="absolute top-5 absolute left-1.5 relative w-20 h-20">
+{/* este es el boton de arriba llama a handledirection con up   */}
 
             <button 
             onClick={() => handleDirection('top')} 
             className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-6 bg-white rounded-full flex items-center justify-center text-cyan-500 text-xs">{'^'}</button>
 
-
+{/* este es el boton de abajo llama a handledirection con down   */}
             <button 
             onClick={() => handleDirection('down')} 
             className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-6 bg-white rounded-full flex items-center justify-center text-cyan-500 text-xs">{'v'}</button>
 
-
+{/* este es el boton de la izquierda llama a handledirection con left   */}
             <button 
             onClick={() => handleDirection('left')} 
             className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full flex items-center justify-center text-cyan-500 text-xs">{'<'}</button>
 
+{/* este es el boton de la derecha llama a handledirection con right   */}
 
             <button 
 
                onClick={() => handleDirection('right')} 
               className="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full flex items-center justify-center text-cyan-500 text-xs">{'>'}</button>
         </div>
+{/* este es el boton de abajo blanco   */}
 
           <div className="absolute right-2 top-49 -translate-y-1/2 w-4 h-4 bg-white flex items-center justify-center text-cyan-500 text-xs"></div>
     </div>
