@@ -18,11 +18,13 @@ const Screen = ({ pokemones, position }) => {
                   ? "bg-[#E2F0CB] border-white scale-105 shadow-md" 
                   : "bg-white/5 border-transparent opacity-60"}`}
             >
+              {/*Imagen del pokemon, muestra el sprite frontal */}
               <img
                 src={pokemon?.sprites?.front_default}
                 alt={pokemon.name}
                 className="w-20 h-20"
               />
+              {/*Nombre del pokemon, si esta seleccionado sael en verde oscuro y si no el texto sale en blanco*/}
               <p className={`text-[10px] font-bold capitalize 
                 ${isSelected ? "text-[#8DA47E]" : "text-white"}`}>
                 {pokemon.name}
