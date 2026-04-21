@@ -3,10 +3,9 @@ import Screen from './components/Screen';
 import GameScreen from './components/GameScreen';
 import LeftControl from './components/LeftControl';
 import RightControl from './components/RightControl';
-import PokemonDetails from './components/PokemonDetails'; // <--- IMPORTANTE: Agregué esta línea
+import PokemonDetails from './components/PokemonDetails'; 
 import useFetch from './hooks/useFetch';
 import { useEffect, useState } from 'react';
-
 
 function App() {
   const url = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0';
@@ -62,21 +61,24 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">{/* Esta es la caja donde envuelve todo  */}
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
       <div className="flex items-center justify-center">
-        <LeftControl handleDirection={handleDirection} />{/* left control recibe las flechas para moverse y right control recibe la funcion para elegir al pokemon */}
+        <LeftControl handleDirection={handleDirection} />
         
-        {/* Corregido para que use comparaciones de longitud mayores a cero */}
         {myPokeSelection.length > 0 && pcPokeSelection.length > 0 ? (
           <GameScreen myPokeSelection={myPokeSelection} pcPokeSelection={pcPokeSelection}/>
         ) : (
           <Screen pokemones={pokemones} position={position} />
         )}
 
-        <RightControl handleSelection={handleSelection} />
+        {/* PASAMOS LAS FUNCIONES DE ESTADO AQUÍ PARA EL BOTÓN DE RESET */}
+        <RightControl 
+          handleSelection={handleSelection} 
+          setMyPokeSelection={setMyPokeSelection} 
+          setPcPokeSelection={setPcPokeSelection} 
+        />
       </div>
 
-      {/* Condicional para que la tarjeta desaparezca en batalla, ! si noe stan seleccionados ambos personajes && entonces haz esto  */}
       {!(myPokeSelection.length > 0 && pcPokeSelection.length > 0) && (
         <PokemonDetails pokemones={pokemones} position={position} />
       )}
